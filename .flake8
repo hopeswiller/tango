@@ -3,4 +3,5 @@ ignore = E203, E266, E501, W503, F403
 exclude = .git,__pycache__,docs/source/conf.py,old,build,dist
 max-complexity = 20
 count = True
+min_python_version = 3.6.1
 select = B,C,E,F,W,T4,B9

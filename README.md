@@ -28,6 +28,7 @@ Setup can be done manually or via Docker which is recommended
 - #### Manual
 
 Run pip install -r requirements.txt
+Run python src/run.py
 
 - #### Docker
 
@@ -52,6 +53,8 @@ TODOs:
 - [ ] Supply email template when sending email
 - [ ] Configure sphinx docs
 - [ ] Add pre-commit hooks
+- [ ] Add more tests
+
 
 ## Status
 
