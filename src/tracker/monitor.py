@@ -1,17 +1,21 @@
+import newrelic.agent
 import os
 import sys
 import schedule
 import logging
+import time
 from docker import errors
 from pyfiglet import Figlet
-import time
-import container
+from . import container
 from smtplib import SMTP, SMTPException
 from email.message import EmailMessage
-from dotenv import load_dotenv
 
-# environs 8.0.0 for env variables
-load_dotenv()
+# Uncomment if not using docker to run script
+# from dotenv import load_dotenv
+# load_dotenv()
+
+# comment this line if you don't wish to use new relic monitoring tool
+app = newrelic.agent.application("Tango Project")
 
 HOST = os.environ.get("HOST")
 EMAIL_USERNAME = os.environ.get("EMAIL_USERNAME")
@@ -21,6 +25,7 @@ EMAIL_BCC = os.environ.get("EMAIL_BCC")
 
 DEBUG = os.environ.get("DEBUG")
 VERBOSE = os.environ.get("VERBOSE")
+RUN_EVERY = os.environ.get("RUN_EVERY")
 CONTAINER_NAME = os.environ.get("CONTAINER_NAME")
 
 
@@ -77,6 +82,10 @@ def main():
             )
 
 
+# comment this line if you don't wish to add send_mail as background_task in new relic
+@newrelic.agent.background_task(
+    application=app, name="send_email", group="sendEmailTask"
+)
 def send_email():
     with SMTP(host=HOST, port=587) as smtp:
         try:
@@ -118,7 +127,7 @@ def send_email():
 figlet = Figlet()
 print(figlet.renderText("Docker SDK"))
 init_logging()
-schedule.every(2).minutes.do(main)
+schedule.every(int(RUN_EVERY)).minutes.do(main)
 
 while True:
     schedule.run_pending()

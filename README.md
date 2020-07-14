@@ -46,6 +46,7 @@ List of features ready and TODOs for future development
 - [x] Attaches an attachment file when sending email notification
   - [x] Creates log file from the logs of the container
 - [x] Runs at every number of minutes specified
+- [x] Monitoring tool setup using new relic
 
 
 TODOs:

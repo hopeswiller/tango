@@ -1,6 +1,7 @@
-pyfiglet==0.8.post1
-docker==4.2.2
-schedule==0.6.0
-pytest==5.3.5
 coverage==5.2
+docker==4.2.2
 flake8==3.8.3
+newrelic==5.14.1.144
+pyfiglet==0.8.post1
+pytest==5.3.5
+schedule==0.6.0

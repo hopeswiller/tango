@@ -1,16 +1,15 @@
 version: '3.4'
 
 services:
-  containertracker:
-    container_name: containertracker
-    image: elment/containertracker
+  tango:
+    container_name: tango
+    image: elment/tango
     build:
       context: .
       dockerfile: Dockerfile
-    env_file: 
+    env_file:
       - ./.env
     command: >
       sh -c "python3 src/run.py"
-    volumes: 
+    volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-
