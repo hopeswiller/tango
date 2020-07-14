@@ -50,6 +50,8 @@ List of features ready and TODOs for future development
 TODOs:
 
 - [ ] Supply email template when sending email
+- [ ] Configure sphinx docs
+- [ ] Add pre-commit hooks
 
 ## Status
 

@@ -1,3 +1,5 @@
 pyfiglet==0.8.post1
 docker==4.2.2
 schedule==0.6.0  
+pytest==5.3.5 
+coverage==5.2     
